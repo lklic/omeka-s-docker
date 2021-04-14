@@ -1,4 +1,4 @@
-# Omeka S dockerized with NGINX and Let's Encrypt Proxies
+# Omeka S dockerized with NGINX, Let's Encrypt Proxies, and automated backups
 
 
 Backup of DB is documented here:
