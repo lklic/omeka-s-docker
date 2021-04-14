@@ -1,7 +1,7 @@
 # Exclude example.env
 !example.env
 database.ini
-example/db/
+db/
 
 # exclude everything
 example/files/*
