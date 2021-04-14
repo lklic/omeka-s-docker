@@ -94,12 +94,10 @@ RUN set -eux; \
 
 VOLUME /var/www/html
 
-ENV OMEKA_VERSION 2.1.2
-ENV OMEKA_SHA1 a9d505d2675c93eb8fc0b9bf0bec060edb3fa6c4
+ENV OMEKA_VERSION 3.0.2
 
 RUN set -ex; \
     curl -L -o omeka.zip "https://github.com/omeka/omeka-s/releases/download/v${OMEKA_VERSION}/omeka-s-${OMEKA_VERSION}.zip"; \
-	echo "$OMEKA_SHA1 *omeka.zip" | sha1sum -c -; \
 	unzip omeka.zip -d /usr/src/; \
 	rm omeka.zip; \
 	chown -R www-data:www-data /usr/src/omeka-s

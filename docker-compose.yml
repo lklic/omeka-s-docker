@@ -43,3 +43,17 @@ services:
       - PMA_HOST=omeka-db
     depends_on:
       - omeka-db
+
+  db-backup:
+    image: zeenlym/mariadb-backup
+    environment:
+      - TIMEZONE=Europe/Berlin
+      - SCHEDULE=0 0 3 * *
+      - BACKUP_METHOD=mysqldump
+      - MYSQL_HOST=omeka-db
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+
+    volumes:
+      - ./backup:/backup
