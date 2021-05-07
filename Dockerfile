@@ -106,10 +106,10 @@ ENV APACHE_DOCUMENT_ROOT /usr/src/omeka-s
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
 RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
-COPY ./config/.htaccess-development /usr/src/omeka-s/.htaccess
+COPY ./config/.htaccess-production /usr/src/omeka-s/.htaccess
 COPY ./config/database.ini /usr/src/omeka-s/config/database.ini
-COPY ./config/local.config-development.php /usr/src/omeka-s/config/local.config.php
-COPY ./config/php-development.ini /usr/local/etc/php/php.ini
+COPY ./config/local.config-production.php /usr/src/omeka-s/config/local.config.php
+COPY ./config/php-production.ini /usr/local/etc/php/php.ini
 
 #RUN service apache2 restart
 
