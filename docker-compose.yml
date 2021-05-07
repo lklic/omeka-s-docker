@@ -2,12 +2,11 @@ version: "3"
 
 services:
   omeka-web:
-    container_name: apache-php
     build:
       context: .
     restart: always
     ports:
-      - 80:80
+      - 8080:8080
     volumes:
       - ./files:/usr/src/omeka-s/files
       - ./logs:/usr/src/omeka-s/logs
@@ -19,11 +18,14 @@ services:
       - EMAIL_USER=${EMAIL_USER}
       - EMAIL_PASSWORD=${EMAIL_PASSWORD}
       - EMAIL_CONNECTION_TYPE=${EMAIL_CONNECTION_TYPE}
+      - VIRTUAL_HOST=${HOST_NAME}
+      - LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}
+      - LETSENCRYPT_HOST=${HOST_NAME}
+      
     depends_on:
       - omeka-db
 
   omeka-db:
-    container_name: mariadb
     image: mariadb:10.4
     restart: always
     volumes:
@@ -35,10 +37,9 @@ services:
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
 
   omeka-db-admin:
-    container_name: phpmyadmin
     image: phpmyadmin/phpmyadmin:latest
     ports:
-      - 8000:80
+      - 8081:8081
     environment:
       - PMA_HOST=omeka-db
     depends_on:
@@ -57,3 +58,8 @@ services:
 
     volumes:
       - ./backup:/backup
+      
+networks:
+  default:
+    external:
+      name: proxy      
