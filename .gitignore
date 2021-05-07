@@ -4,16 +4,16 @@ database.ini
 db/
 
 # exclude everything
-example/files/*
-example/logs/*
-example/modules/*
-example/themes/*
+files/*
+logs/*
+modules/*
+themes/*
 
 # exception to the rule
-!example/files/.gitkeep
-!example/logs/.gitkeep
-!example/modules/.gitkeep
-!example/themes/.gitkeep
+!files/.gitkeep
+!logs/.gitkeep
+!modules/.gitkeep
+!themes/.gitkeep
 
 # Created by https://www.gitignore.io/api/git,linux,macos,dotenv,windows,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=git,linux,macos,dotenv,windows,visualstudiocode
